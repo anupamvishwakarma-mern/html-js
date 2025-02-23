@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: url("bubble.jpg") #030728 no-repeat center;
+    background-size: cover;
+}
+
+.slider-wrapper{
+    overflow: hidden;
+    max-width: 1500px;
+    padding: 0 70px 55px;
+}
+
+.slider-wrapper .card-list{
+    display: flex;
+    gap: 20px;
+    /* justify-content: center;
+    align-items: center; */
+}
+
+.slider-wrapper .card-list .card-item{
+    user-select: none;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider-wrapper .card-list .card-item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}

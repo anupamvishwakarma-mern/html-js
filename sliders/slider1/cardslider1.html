@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="slider.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+  </head>
+  <body>
+    <div class="container swiper">
+      <div class="slider-wrapper">
+        <div class="card-list swiper-wrapper">
+          <div class="card-item swiper-slide">
+            <img src="img1.jpg" alt="profile 1" />
+          </div>
+          <div class="card-item swiper-slide">
+            <img src="img2.jpg" alt="profile 1" />
+          </div>
+          <div class="card-item swiper-slide">
+            <img src="img3.jpg" alt="profile 1" />
+          </div>
+          <div class="card-item swiper-slide">
+            <img src="img4.jpg" alt="profile 1" />
+          </div>
+          <div class="card-item swiper-slide">
+            <img src="img5.jpg" alt="profile 1" />
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-scrollbar"></div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      const swiper = new Swiper(".slider-wrapper", {
+        loop: true,
+        spaceBetween: 30,
+        // centeredSlides: true,
+        grabCursor: true,
+
+        // If we need pagination
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+          dynamicBullets: true,
+        },
+
+        // Navigation arrows
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+
+        breakpoints: {
+          // when window width is >= 320px
+          0: {
+            slidesPerView: 1,
+          },
+          // when window width is >= 480px
+          720: {
+            slidesPerView: 2,
+          },
+          // when window width is >= 640px
+          1024: {
+            slidesPerView: 3,
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
