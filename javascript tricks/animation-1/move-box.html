@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Move box</title>
+    <style>
+      .big-box {
+        width: 300px;
+        height: 300px;
+        background-color: skyblue;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .sm-box {
+        width: 50px;
+        height: 50px;
+        background-color: green;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .action {
+        position: absolute;
+        top: 350px;
+        left: 50px;
+        display: flex;
+        gap: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="big-box" id="big-box"></div>
+    <div class="sm-box" id="sm-box"></div>
+
+    <div class="action">
+      <button id="move">Move</button>
+      <button id="right-move">Right</button>
+      <button id="bottom-move">Bottom</button>
+      <button id="top-move">Top</button>
+      <button id="left-move">Left</button>
+    </div>
+
+    <script>
+      const smBox = document.getElementById("sm-box");
+
+      const moveBtn = document.getElementById("move");
+      const rightBtn = document.getElementById("right-move");
+      const bottomBtn = document.getElementById("bottom-move");
+      const topBtn = document.getElementById("top-move");
+      const leftBtn = document.getElementById("left-move");
+
+      let posX = 0;
+      let posY = 0;
+      let interval;
+
+      function moveBox(direction) {
+        clearInterval(interval);
+
+        interval = setInterval(() => {
+          if (direction === "right" && posX < 250) {
+            posX++;
+            smBox.style.left = posX + "px";
+          } else if (direction === "bottom" && posY < 250) {
+            posY++;
+            smBox.style.top = posY + "px";
+          } else if (direction === "left" && posX > 0) {
+            posX--;
+            smBox.style.left = posX + "px";
+          } else if (direction === "top" && posY > 0) {
+            posY--;
+            smBox.style.top = posY + "px";
+          } else if (direction === "diagonal" && posX < 250 && posY < 250) {
+            posX++;
+            posY++;
+            smBox.style.left = posX + "px";
+            smBox.style.top = posY + "px";
+          } else {
+            clearInterval(interval);
+          }
+        }, 10);
+      }
+
+      moveBtn.addEventListener("click", () => moveBox("diagonal"));
+      rightBtn.addEventListener("click", () => moveBox("right"));
+      bottomBtn.addEventListener("click", () => moveBox("bottom"));
+      leftBtn.addEventListener("click", () => moveBox("left"));
+      topBtn.addEventListener("click", () => moveBox("top"));
+    </script>
+  </body>
+</html>
