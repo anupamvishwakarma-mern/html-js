@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-color: #111010;
+}
+
+.button-container .border {
+    padding: 5px;
+    background: linear-gradient(120deg, #8d1f0c, #fac30d);
+}
+
+.button-container .colorful-button {
+    padding: 20px 30px;
+    font-size: 26px;
+    background-color: #000;
+    color: #aaaaaa;
+    border: none;
+}
+
+.button-container .border:hover {
+    background: linear-gradient(120deg, #fac30d, #8d1f0c);
+}
+
+.button-container .border:hover .colorful-button {
+    color: #fff;
+    padding: 22px 32px;
+}

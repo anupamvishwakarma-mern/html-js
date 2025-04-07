@@ -1,0 +1,35 @@
+:root {
+    --spoiler-color: #000;
+}
+
+.card-container {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-container .card {
+    background-color: rgb(220, 219, 219);
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    width: 500px;
+}
+
+.card-container .card p {
+    font-size: 1.3rem;
+    line-height: 28px;
+}
+
+.card-container .card .spoiler {
+    background-color: var(--spoiler-color);
+    color: var(--spoiler-color);
+    transition: all 0.3s ease-in-out;
+}
+
+.card-container .card .spoiler:hover {
+    background-color: initial;
+    color: initial;
+}

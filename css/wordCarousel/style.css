@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .word{
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #000;
+}
+
+.container .word .wrap{
+    background-color: rgb(54, 54, 255);
+    color: #ffffff;
+    padding: 15px 20px;
+    border-radius: 6px;
+    /* animation: wording 1s linear infinite; */
+}
+
+.container .word .wrap::after{
+    content: "Cats";
+    animation: wording 5s linear infinite;
+}
+
+@keyframes wording{
+    0%{
+        content: "Cats";
+    }
+    40%{
+        content: "Coding";
+    }
+    60%{
+        content: "Scrimba";
+    }
+    100%{
+        content: "Singing";
+    }
+}
+
