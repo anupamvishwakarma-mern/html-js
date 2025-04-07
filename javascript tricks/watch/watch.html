@@ -48,7 +48,7 @@
         box-shadow: 0 0 5px #0005, inset 1.5px 3px 0px #333,
           inset -1.5px -3px 0px #333;
         z-index: 1;
-        animation: watch 43200s linear infinite;
+        /* animation: watch 43200s linear infinite; */
       }
 
       .minute {
@@ -63,7 +63,7 @@
         box-shadow: 0 0 5px #0005, inset 1.5px 3px 0px #333,
           inset -1.5px -3px 0px #333;
         z-index: 2;
-        animation: watch 3600s linear infinite;
+        /* animation: watch 3600s linear infinite; */
       }
 
       .second {
@@ -76,7 +76,7 @@
         border-radius: 50%;
         border: 1px solid #eee;
         z-index: 3;
-        animation: watch 60s steps(60, end) 0s infinite;
+        /* animation: watch 60s steps(60, end) 0s infinite; */
       }
 
       .second::before {
@@ -136,10 +136,42 @@
           transform: rotate(360deg);
         }
       }
+
+      .watch{
+        display: flex;
+        gap: 100px;
+        align-items: center;
+      }
+
+      .timer{
+        display: flex;
+        gap: 5px;
+        /* border: 1px solid #333; */
+        width: fit-content;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+
+      .timer h2{
+        margin: 0;
+        width: 45px;
+        height: 45px;
+        border: 2px solid #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .timer span{
+        font-size: 40px;
+      }
+
     </style>
   </head>
   <body>
     <!-- From Uiverse.io by david-mohseni -->
+     <div class="watch">
     <div class="face">
       <p class="v-index">II</p>
       <p class="h-index">II</p>
@@ -152,27 +184,53 @@
       </div>
     </div>
 
-    <!-- <script>
+
+    <div class="timer">
+      <h2 class="h">  </h2> <span>:</span>
+      <h2 class="m">  </h2> <span>:</span>
+      <h2 class="s">  </h2>
+    </div>
+  </div>
+
+    <script>
       const $second = document.querySelector(".second");
       const $minute = document.querySelector(".minute");
       const $hour = document.querySelector(".hour");
 
-      function watch() {
-        const time = new Date();
-        const hours = time.getHours() % 12;
-        const minutes = time.getMinutes();
-        const seconds = time.getSeconds();
-
-        const secondsDegrees = (seconds * 360) / 60;
-        const minutesDegrees = (minutes * 360) / 60 + seconds * 6;
-        const hoursDegrees = (hours * 360) / 12 + minutes * 30;
-
-        $second.style.transform = `rotate(${secondsDegrees}deg)`;
-        $minute.style.transform = `rotate(${minutesDegrees}deg)`;
-        $hour.style.transform = `rotate(${hoursDegrees}deg)`;
+      function setTransform(elem, degrees) {
+        elem.style.transform = `rotate(${degrees}deg)`;
       }
 
-      setInterval(watch, 1000);
-    </script> -->
+      function updateClock() {
+        const now = new Date();
+        const hours = now.getHours() % 12;
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
+        
+        const secondsDegrees = (seconds / 60) * 360;
+        const minutesDegrees = (minutes / 60) * 360 + (seconds / 60) * 6;
+        const hoursDegrees = (hours / 12) * 360 + (minutes / 60) * 30;
+
+        setTransform($second, secondsDegrees);
+        setTransform($minute, minutesDegrees);
+        setTransform($hour, hoursDegrees);
+      }
+
+      setInterval(updateClock, 1000);
+      setInterval(updateTimer, 1000);
+
+      function updateTimer() {
+        const now = new Date();
+        const hours = now.getHours() % 12;
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
+
+        document.querySelector(".h").textContent = hours < 10 ? `0${hours}` : hours;
+        document.querySelector(".m").textContent = minutes < 10 ? `0${minutes}` : minutes;
+        document.querySelector(".s").textContent = seconds < 10 ? `0${seconds}` : seconds;
+      }
+
+    </script>
+
   </body>
 </html>
