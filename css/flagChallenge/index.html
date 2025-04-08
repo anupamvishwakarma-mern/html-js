@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="flag-container">
+      <div class="flag">
+        <div class="blue"></div>
+        <div class="white"></div>
+        <div class="red"></div>
+      </div>
+    </div>
+    <div class="flag-container">
+      <div class="indian-flag">
+        <div class="red"></div>
+        <div class="white">
+          <div class="chakra" id="chakra">
+            <div class="center-dot">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+        <div class="green"></div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const chakra = document.getElementById("chakra");
+        const line = document.querySelectorAll(".center-dot div");
+
+        function handleCkakra() {
+          const h = chakra.offsetHeight;
+          chakra.style.width = h + "px";
+        }
+
+        line.forEach((el, i) => {
+          el.style.transform = `rotate(${(360 / 24) * (i + 1)}deg)`;
+        });
+
+        handleCkakra();
+
+        window.addEventListener("resize", handleCkakra);
+      });
+    </script>
+  </body>
+</html>
